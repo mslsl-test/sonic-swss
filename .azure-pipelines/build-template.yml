@@ -23,12 +23,6 @@ parameters:
 - name: sonic_slave
   type: string
 
-- name: buildimage_artifact_name
-  type: string
-
-- name: buildimage_pipeline
-  type: number
-
 - name: sairedis_artifact_name
   type: string
 
@@ -54,7 +48,7 @@ jobs:
   pool:
     ${{ if ne(parameters.pool, 'default') }}:
       name: ${{ parameters.pool }}
-    ${{ if eq(parameters.pool, 'default') }}:
+    ${{ else }}:
       vmImage: 'ubuntu-20.04'
 
   container:
